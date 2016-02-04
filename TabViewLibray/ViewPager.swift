@@ -79,6 +79,7 @@ class ViewPager :UIView, UIScrollViewDelegate {
             width: self.frame.width,
             height: self.tabHeigh
         )
+        removeAllSubviews(self.tabButtonView)
         views.enumerate().forEach {
             let titleView = (selectedIndex != $0.0) ? $0.1.noSelectedTitleView : $0.1.selectedTitleView
             titleView.frame = CGRect(
@@ -88,25 +89,32 @@ class ViewPager :UIView, UIScrollViewDelegate {
                 height: tabHeigh
             )
             
-            let frame = CGRect(
-                x: 0,
-                y: 0,
-                width: self.frame.width / CGFloat(viewNum),
-                height: titleView.frame.height
-            )
-            let titleTagButton = UIButton(frame: frame)
-            titleTagButton.tag = $0.0
-            titleTagButton.addTarget(self, action: Selector("onClickTag:"), forControlEvents: UIControlEvents.TouchUpInside)
-            titleView.addSubview(titleTagButton)
+            if titleView.subviews.count == 0 {
+                let frame = CGRect(
+                    x: 0,
+                    y: 0,
+                    width: self.frame.width / CGFloat(viewNum),
+                    height: titleView.frame.height
+                )
+                let titleTagButton = UIButton(frame: frame)
+                titleTagButton.tag = $0.0
+                titleTagButton.addTarget(self, action: Selector("onClickTag:"), forControlEvents: UIControlEvents.TouchUpInside)
+                titleView.addSubview(titleTagButton)
+            }
             
             self.tabButtonView.addSubview(titleView)
         }
         self.addSubview(tabButtonView)
     }
     
-    
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let selectIndex = Int(self.scrollView.contentOffset.x / self.frame.width)
         changePage(selectIndex)
+    }
+    
+    func removeAllSubviews(parentView: UIView){
+        for subview in parentView.subviews {
+            subview.removeFromSuperview()
+        }
     }
 }
