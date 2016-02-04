@@ -25,10 +25,16 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 
     func makeViewPagerElement(color: UIColor) -> ViewPagerElement{
         let selectedTitleView = UIView()
+        let selectedButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        selectedButton.setTitle("Hello!", forState: UIControlState.Normal)
+        selectedTitleView.addSubview(selectedButton)
         selectedTitleView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         selectedTitleView.backgroundColor = UIColor.whiteColor()
         
         let noSelectedTitleView = UIView()
+        let noSelectedButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        noSelectedButton.setTitle("Hello!", forState: UIControlState.Normal)
+        noSelectedTitleView.addSubview(noSelectedButton)
         noSelectedTitleView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         noSelectedTitleView.backgroundColor = color
         

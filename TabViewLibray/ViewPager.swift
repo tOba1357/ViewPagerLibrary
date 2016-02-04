@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ViewPager :UIView, UIScrollViewDelegate {
+class ViewPager :UIView, UIScrollViewDelegate, ViewPagerTabDelegate {
     private let tabButtonView = UIView()
     private let scrollView = UIScrollView()
-    private let uiPageController = UIPageControl()
+    private var viewPageTab: ViewPagerTab!
     private var tabHeigh:CGFloat = 0
     private var views: [ViewPagerElement] = []
     private var viewNum = 0
@@ -23,6 +23,15 @@ class ViewPager :UIView, UIScrollViewDelegate {
         self.tabHeigh = tabHeigh
         self.viewNum = views.count
         self.views = views
+        
+        let tabViewFrame = CGRect(
+            x: 0,
+            y: 0,
+            width: self.frame.width,
+            height: self.tabHeigh
+        )
+        self.viewPageTab = ViewPagerTab(delegate: self, frame: tabViewFrame, views: views)
+        self.addSubview(self.viewPageTab)
         
         let scrolleViewFrame = CGRect(x: 0, y: tabHeigh, width: frame.width, height: frame.height)
         self.scrollView.frame = scrolleViewFrame
@@ -44,7 +53,6 @@ class ViewPager :UIView, UIScrollViewDelegate {
         }
         self.addSubview(scrollView)
         
-        self.uiPageController.numberOfPages = viewNum
         changePage(defaultPage)
     }
 
@@ -58,7 +66,7 @@ class ViewPager :UIView, UIScrollViewDelegate {
     
     func changePage(pageIndex: Int) {
         self.selectView = pageIndex
-        makeTabButtonView(pageIndex)
+        self.viewPageTab.changeSelectedIndex(pageIndex)
         let visibleRect = CGRect(
             x: self.scrollView.frame.width * CGFloat(pageIndex),
             y: 0,
@@ -66,45 +74,6 @@ class ViewPager :UIView, UIScrollViewDelegate {
             height: self.scrollView.frame.height
         )
         self.scrollView.scrollRectToVisible(visibleRect, animated: true)
-    }
-
-    func onClickTag(button :UIButton) {
-        changePage(button.tag)
-    }
-    
-    func makeTabButtonView(selectedIndex: Int) {
-        self.tabButtonView.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: self.frame.width,
-            height: self.tabHeigh
-        )
-        removeAllSubviews(self.tabButtonView)
-        views.enumerate().forEach {
-            let titleView = (selectedIndex != $0.0) ? $0.1.noSelectedTitleView : $0.1.selectedTitleView
-            titleView.frame = CGRect(
-                x: self.frame.width / CGFloat(viewNum) * CGFloat($0.0),
-                y: 0,
-                width: self.frame.width / CGFloat(viewNum),
-                height: tabHeigh
-            )
-            
-            if titleView.subviews.count == 0 {
-                let frame = CGRect(
-                    x: 0,
-                    y: 0,
-                    width: self.frame.width / CGFloat(viewNum),
-                    height: titleView.frame.height
-                )
-                let titleTagButton = UIButton(frame: frame)
-                titleTagButton.tag = $0.0
-                titleTagButton.addTarget(self, action: Selector("onClickTag:"), forControlEvents: UIControlEvents.TouchUpInside)
-                titleView.addSubview(titleTagButton)
-            }
-            
-            self.tabButtonView.addSubview(titleView)
-        }
-        self.addSubview(tabButtonView)
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
@@ -116,5 +85,9 @@ class ViewPager :UIView, UIScrollViewDelegate {
         for subview in parentView.subviews {
             subview.removeFromSuperview()
         }
+    }
+    
+    func onClickTabButton(index: Int) {
+        self.changePage(index)
     }
 }
