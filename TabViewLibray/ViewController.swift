@@ -1,4 +1,5 @@
 //
+
 //  ViewController.swift
 //  TabViewLibray
 //
@@ -8,11 +9,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let views = [makeViewPagerElement(UIColor.blackColor()), makeViewPagerElement(UIColor.redColor()), makeViewPagerElement(UIColor.greenColor())]
+        let tabView = ViewPager(frame: self.view.frame, tabHeigh: 100, views: views)
+        self.view.addSubview(tabView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +23,30 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    func makeViewPagerElement(color: UIColor) -> ViewPagerElement{
+        let selectedTitleView = UIView()
+        selectedTitleView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        selectedTitleView.backgroundColor = UIColor.whiteColor()
+        
+        let noSelectedTitleView = UIView()
+        noSelectedTitleView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        noSelectedTitleView.backgroundColor = color
+        
+        let mainView = UIScrollView()
+        mainView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 100)
+        mainView.backgroundColor = color
+        mainView.contentSize = CGSize(width: self.view.frame.width, height: 1000)
+        let label = UILabel()
+        label.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        label.text = "Hello!"
+        label.textColor = UIColor.whiteColor()
+        mainView.addSubview(label)
+        
+        return ViewPagerElement(
+            selectedTitleView: selectedTitleView,
+            noSelectedTitleView: noSelectedTitleView,
+            mainView: mainView
+        )
+    }
 }
 

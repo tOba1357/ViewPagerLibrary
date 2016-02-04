@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		279F93ED1C63902000B7C01B /* ViewPagerElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279F93EC1C63902000B7C01B /* ViewPagerElement.swift */; };
 		27CC44C41C637F0400FDCCA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC44C31C637F0400FDCCA5 /* AppDelegate.swift */; };
 		27CC44C61C637F0400FDCCA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC44C51C637F0400FDCCA5 /* ViewController.swift */; };
 		27CC44C91C637F0400FDCCA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27CC44C71C637F0400FDCCA5 /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 		27CC44CE1C637F0400FDCCA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27CC44CC1C637F0400FDCCA5 /* LaunchScreen.storyboard */; };
 		27CC44D91C637F0500FDCCA5 /* TabViewLibrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC44D81C637F0500FDCCA5 /* TabViewLibrayTests.swift */; };
 		27CC44E41C637F0500FDCCA5 /* TabViewLibrayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC44E31C637F0500FDCCA5 /* TabViewLibrayUITests.swift */; };
+		27CC44F21C637FC000FDCCA5 /* ViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC44F11C637FC000FDCCA5 /* ViewPager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		279F93EC1C63902000B7C01B /* ViewPagerElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPagerElement.swift; sourceTree = "<group>"; };
 		27CC44C01C637F0400FDCCA5 /* TabViewLibray.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabViewLibray.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CC44C31C637F0400FDCCA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27CC44C51C637F0400FDCCA5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		27CC44DF1C637F0500FDCCA5 /* TabViewLibrayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TabViewLibrayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CC44E31C637F0500FDCCA5 /* TabViewLibrayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewLibrayUITests.swift; sourceTree = "<group>"; };
 		27CC44E51C637F0500FDCCA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27CC44F11C637FC000FDCCA5 /* ViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				27CC44CA1C637F0400FDCCA5 /* Assets.xcassets */,
 				27CC44CC1C637F0400FDCCA5 /* LaunchScreen.storyboard */,
 				27CC44CF1C637F0400FDCCA5 /* Info.plist */,
+				27CC44F11C637FC000FDCCA5 /* ViewPager.swift */,
+				279F93EC1C63902000B7C01B /* ViewPagerElement.swift */,
 			);
 			path = TabViewLibray;
 			sourceTree = "<group>";
@@ -259,6 +265,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27CC44F21C637FC000FDCCA5 /* ViewPager.swift in Sources */,
+				279F93ED1C63902000B7C01B /* ViewPagerElement.swift in Sources */,
 				27CC44C61C637F0400FDCCA5 /* ViewController.swift in Sources */,
 				27CC44C41C637F0400FDCCA5 /* AppDelegate.swift in Sources */,
 			);
@@ -485,6 +493,7 @@
 				27CC44EA1C637F0500FDCCA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27CC44EB1C637F0500FDCCA5 /* Build configuration list for PBXNativeTarget "TabViewLibrayTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +502,7 @@
 				27CC44ED1C637F0500FDCCA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27CC44EE1C637F0500FDCCA5 /* Build configuration list for PBXNativeTarget "TabViewLibrayUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +511,7 @@
 				27CC44F01C637F0500FDCCA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
