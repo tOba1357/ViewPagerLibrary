@@ -8,12 +8,6 @@
 
 import UIKit
 
-
-class ViewPagerController :UIViewController {
-    
-    
-}
-
 class ViewPager :UIView, UIScrollViewDelegate {
     private let tabButtonView = UIView()
     private let scrollView = UIScrollView()
